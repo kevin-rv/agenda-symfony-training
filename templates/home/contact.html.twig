@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-3">
+        <div class="card">
+            <h3 class="card-header">Détails du contact</h3>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h5 class="display-4 text-center">{{contact.name}} {{ contact.firstname }}</h5>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="phone">Téléphone</label>
+                        <input class="form-control" type="text" id="phone"  value="{{ contact.phone }}" disabled>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="age">Age</label>
+                        <input class="form-control" type="text" id="age"  value="{{ contact.age }}" disabled>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="address">Adresse</label>
+                        <input class="form-control" type="text" id="address"  value="{{ contact.address }}" disabled>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="ville">Ville</label>
+                        <input class="form-control" type="text" id="ville"  value="{{ contact.ville }}" disabled>
+                    </li>
+                    <li class="list-group-item">
+                        <label for="category">Categorie</label>
+                        <input class="form-control" type="text" id="category"  value="{{ contact.category.title }}" disabled>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="my-4">
+{% endblock %}

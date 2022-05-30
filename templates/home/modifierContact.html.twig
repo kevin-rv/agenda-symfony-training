@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="card">
+            <h5 class="card-header">Modifier un contact</h5>
+            <div class="card-body">
+                {{ form_start(form,{'attr': {'novalidate' : 'novalidate'}} ) }}
+                {{ form_label(form.name, 'Nom') }}
+                {{ form_widget(form.name) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

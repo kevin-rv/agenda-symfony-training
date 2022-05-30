@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <p>{{ message }}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+        <div>
+            <h1 class="mt-3">Liste des Contacts</h1>
+            <a href="{{ path('create_contact') }}" type="button" class="btn btn-info mb-3">Créer un contact</a>
+        </div>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">nom</th>
+                <th scope="col">prenom</th>
+                <th scope="col">telephone</th>
+                <th scope="col">categorie</th>
+                <th scope="col">action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for contact in contacts %}
+                <th scope="row">{{ contact.id }}</th>
+                <td>{{ contact.name}}</td>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{contact.category.title}}</td>
+                <td>
+                    <a href="{{ path('get_one_contact', {contactId: contact.id}) }}" type="button" class="btn btn-info">Afficher</a>
+                    <a href="{{ path('update_contact', {contactId: contact.id}) }}" type="button" class="btn btn-warning">Modifier</a>
+                    <a href="{{ path('delete_contact', {contactId: contact.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

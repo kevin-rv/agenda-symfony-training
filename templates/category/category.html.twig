@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            <p>{{ message }}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+    <div>
+        <h1 class="mt-3">Liste des Categories</h1>
+        <a href="{{ path('add_category') }}" type="button" class="btn btn-info mb-3">Créer une categorie</a>
+    </div>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">titre</th>
+            <th scope="col">action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% for categorie in categories %}
+            <th scope="row">{{ categorie.id }}</th>
+            <td>{{ categorie.title}}</td>
+            <td>
+                <a href="{{ path('update_category', {categoryId: categorie.id}) }}" type="button" class="btn btn-warning">Modifier</a>
+                <a href="{{ path('delete_category', {categoryId: categorie.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
